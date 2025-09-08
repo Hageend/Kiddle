@@ -1,0 +1,257 @@
+.carrito-container {
+  background: #0d1b52;
+  min-height: 100vh;
+  /*padding: 15px;*/
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 19px;
+}
+h2 {
+  color: #8a8888;
+}
+
+.direccion-card {
+  background: #e2e2e2;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  /*border-radius: 10px;*/
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.cambiar-btn {
+  background: none;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.carrito-main-card {
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 20px;
+  color: #000;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.productos-lista {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.producto-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  position: relative;
+}
+
+.check-producto {
+  margin-right: 10px;
+}
+
+.producto-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.producto-info {
+  flex: 1;
+}
+
+.producto-nombre {
+  color: #080808;
+}
+
+.producto-precio {
+  font-size: 16px;
+  margin: 17px 0;
+  color: #474747;
+}
+
+.producto-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.producto-cantidad button {
+  background: #00a86b;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.producto-subtotal {
+  margin: 0 15px;
+}
+
+.eliminar {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: red;
+  cursor: pointer;
+  padding-bottom: 120px;
+}
+
+
+.resumen-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 70%;
+  text-align: center;
+}
+
+.resumen-card table {
+  width: 100%;
+  margin: 10px 0;
+  border-collapse: collapse;
+}
+
+.resumen-card th,
+.resumen-card td {
+  text-align: center;
+  padding: 5px;
+}
+
+.resumen-card h3 {
+  margin-top: 10px;
+}
+
+.iva {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.comprar-btn {
+  width: 100%;
+  padding: 10px;
+  background: #00a86b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ------ modal ------------*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250, 250, 250, 0.7); /* Fondo oscuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  width: 70%;
+  height: 95%;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  overflow-y: auto;
+}
+
+form {
+  background-color: white;
+  padding: 4rem;
+  border-radius: 12px;
+  width: 600px;
+  margin: 40px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+form label {
+  font-weight: bold;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 5px;
+  color: black;
+}
+form div:last-child a {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 15px; 
+}
+form input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+.direccion-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.direccion-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.guardar-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: red;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
