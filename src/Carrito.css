@@ -13,8 +13,8 @@ h2 {
 }
 
 .direccion-card {
-  background: #e2e2e2;
-  color: #000;
+  background: #172c72;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,12 +25,13 @@ h2 {
 }
 
 .cambiar-btn {
-  background: none;
-  border: 1px solid #000;
+  background: #fff;
+  border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 6px 12px;
   cursor: pointer;
   font-size: 14px;
+  width: 100px;
 }
 
 

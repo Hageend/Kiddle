@@ -4,6 +4,7 @@ import React, { useId, useState } from 'react';
 import "./Carrito.css";
 import Direccion from "./Direccion";
 import NavBar from "./NavBar";
+import { useNavigate } from "react-router-dom";
 
 function Carrito() {
   const [productos, setProductos] = useState([
@@ -23,7 +24,7 @@ function Carrito() {
     }
   ]);
     const total = productos.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
-  
+    const navigate = useNavigate();
     const [mostrarModal, setMostrarModal] = useState(false);
   
    const incrementar = (id) => {
@@ -112,6 +113,10 @@ function Carrito() {
       // Aquí podrías enviar los datos a una API o realizar otra acción
     };
 
+    const confirmarCompra = () => {
+    navigate("/ConfirmarCompra");
+  };
+
   return (
     <>
     <NavBar />
@@ -121,7 +126,7 @@ function Carrito() {
         <p>
           Dirección de envío: <label>Av. Ejemplo 123, CDMX</label>
         </p>
-        <button className="cambiar-btn" onClick={() => setMostrarModal(true)}>Cambiar</button>
+        <button className="cambiar-btn" onClick={() => setMostrarModal(true)}><b>Cambiar</b></button>
       </div>
     {/*-----Modal------*/}
       <Direccion isOpen={mostrarModal} onClose={() => setMostrarModal(false)}>
@@ -167,7 +172,7 @@ function Carrito() {
           <h2>Productos</h2>
           {productos.map((p) => (
             <div key={p.id} className="producto-card">
-              <input type="checkbox" className="check-producto" />
+              <p className="check-producto"></p>
               <img src={p.imagen} alt={p.nombre} className="producto-img" />
               <div className="producto-info">
                 <p className="producto-nombre">{p.nombre}</p>
@@ -211,7 +216,7 @@ function Carrito() {
           </table>
           <h3>Total: ${total}.00 MXN</h3>
           <p className="iva">Los precios incluyen IVA</p>
-          <button className="comprar-btn">Comprar Ahora</button>
+          <button className="comprar-btn" onClick={confirmarCompra}>Comprar Ahora</button>
         </div>
       </div>
     </div>

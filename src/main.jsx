@@ -4,6 +4,8 @@ import App from './App'
 import InicioSesion from "./InicioSesion"
 import RegistroCliente from "./RegistroCliente"
 import Carrito from "./Carrito"
+import ConfirmarCompra from "./ConfirmarCompra"
+import Envio from "./Envio";
 
 /*ReactDOM.createRoot(document.getElementById('root')).render(<InicioSesion/>)
 ReactDOM.createRoot(document.getElementById('root')).render(<RegistroCliente/>)
@@ -20,6 +22,8 @@ function Main() {
                 <Route path="/inicio-sesion" element={<InicioSesion />} />
                 <Route path="/registro-cliente" element={<RegistroCliente />} />
                 <Route path="/Carrito" element={<Carrito />} />
+                <Route path="/ConfirmarCompra" element={<ConfirmarCompra />} />
+                <Route path="/Envio" element={<Envio />} />
             </Routes>
         </Router>
     );
