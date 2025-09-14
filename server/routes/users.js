@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const prisma = require('../prisma/client');
 
-// Aquí se definirán los endpoints CRUD
-
 // GET /api/users - Obtener todos los usuarios
 router.get('/', async (req, res) => {
   try {

@@ -3,11 +3,22 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT | 3001;
 
-const userRoutes = require('./routes/users')
-app.use('/api/users', userRoutes)
+const cors = require('cors');
 
 // Middleware para parsear JSON
+app.use(cors());
 app.use(express.json());
+
+const userRoutes = require('./routes/users')
+const authRoutes = require('./routes/auth');
+const dataRoutes = require('./routes/data');
+
+
+app.use('/api/users', userRoutes)
+app.use('/api/auth', authRoutes);
+app.use('/api/data', dataRoutes)
+
+
 
 // Endpoint de prueba
 app.get('/api', (req, res) => {
