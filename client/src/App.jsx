@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import Carrito from './pages/Carrito';
+import ConfirmarCompra from './pages/ConfirmarCompra';
+import Envio from './pages/Envio';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
@@ -30,7 +33,30 @@ function App() {
             </ProtectedRoute>
           }
         />
-        
+        <Route
+          path="/carrito"
+          element={
+            <ProtectedRoute>
+              <Carrito />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ConfirmarCompra"
+          element={
+            <ProtectedRoute>
+              <ConfirmarCompra />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/envio"
+          element={
+            <ProtectedRoute>
+              <Envio />
+            </ProtectedRoute>
+          }
+        />
         {/* Una ruta "catch-all" por si el usuario va a una URL que no existe */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

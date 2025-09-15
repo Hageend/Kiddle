@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar';
 
 const HomePage = () => {
   
@@ -10,8 +11,10 @@ const HomePage = () => {
   };
 
   return (
+    <>
     <div>
       <div>
+        <NavBar />
         <div>
             <h1>Panel de Control de Mascotas</h1>
             <button onClick={handleLogout}>Cerrar Sesión</button>
@@ -22,6 +25,7 @@ const HomePage = () => {
           </div>
       </div>
     </div>
+    </>
   );
 };
 
