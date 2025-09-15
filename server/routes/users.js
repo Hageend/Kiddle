@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
         primer_apellido: true,
         segundo_apellido: true,
         correo: true,
+        telefono: true,
       },
     });
     res.json(users);

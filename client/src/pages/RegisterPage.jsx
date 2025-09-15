@@ -8,19 +8,33 @@ const RegisterPage = () => {
     primer_apellido: '',
     segundo_apellido: '',
     correo: '',
-    contraseña: '', 
-    telefono: '',
+    contraseña: '',
+    confirmarContraseña: '',
   });
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    if (error) setError('');
+  }
+
+  console.log(formData);
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('')
+
+    if (formData.contraseña !== formData.confirmarContraseña) {
+      setError('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+      return;
+    }
+
     try {
-      await apiClient.post('/auth/register', formData);
+      const { confirmarContraseña, ...dataToSend } = formData;
+      await apiClient.post('/auth/register', dataToSend);
       alert('¡Registro exitoso! Por favor, inicia sesión.');
       navigate('/login');
     } catch (error) {
@@ -39,7 +53,8 @@ const RegisterPage = () => {
           <input name="segundo_apellido" value={formData.segundo_apellido} onChange={handleChange} placeholder="Segundo Apellido (Opcional)" />
           <input type="email" name="correo" value={formData.correo} onChange={handleChange} placeholder="Correo Electrónico" required />
           <input type="password" name="contraseña" value={formData.contraseña} onChange={handleChange} placeholder="Contraseña" required />
-          <input type="tel" name="telefono" value={formData.telefono} onChange={handleChange} placeholder="Teléfono (Opcional)" />
+          <input type="password" name="confirmarContraseña" value={formData.confirmarContraseña} onChange={handleChange} placeholder="Confirmar Contraseña" required />
+          {error && <p>{error}</p>}
           <button type="submit">Crear Cuenta</button>
         </form>
         <div>

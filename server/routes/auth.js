@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 // POST /api/auth/register - Registrar un nuevo usuario
 router.post('/register', async (req, res) => {
   try {
-    const { nombre, primer_apellido, segundo_apellido, correo, contraseña, telefono } = req.body;
+    const { nombre, primer_apellido, segundo_apellido, correo, contraseña } = req.body;
     
     // 1. Hashear la contraseña
     const contraseña_hash = await bcrypt.hash(contraseña, 10);
@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
         segundo_apellido,
         correo,
         contrase_a_hash: contraseña_hash, // Guardamos el hash
-        telefono,
       },
     });
 
