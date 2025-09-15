@@ -17,7 +17,7 @@ function NavBar() {
       </div>
       <div>
         <button onClick={() => navigate('/Menu')}>Menú</button>
-          <button onClick={() => navigate('/Carrito')}>Ver Productos</button>
+          <button onClick={() => navigate('/Carrito')}>Carrito</button>
           <button onClick={() => navigate('/Dietas')}>Ver Dietas</button>
         <button onClick={handleLogout}>Cerrar Sesión</button>
       </div>
