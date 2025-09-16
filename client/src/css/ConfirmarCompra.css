@@ -45,17 +45,18 @@
   border-radius: 8px;
 }
 
-/* total */
 .resumen-fijo {
   flex: 1;
   position: sticky;
   top: 20px;
   padding: 30px;
+  color: #141414;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   height: fit-content;
+  
 }
 
 .resumen-fijo .total {
