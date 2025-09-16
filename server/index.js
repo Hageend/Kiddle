@@ -12,11 +12,13 @@ app.use(express.json());
 const userRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth');
 const dataRoutes = require('./routes/data');
+const petRoutes = require('./routes/pets');
 
 
 app.use('/api/users', userRoutes)
 app.use('/api/auth', authRoutes);
 app.use('/api/data', dataRoutes)
+app.use('/api/pets', petRoutes)
 
 
 

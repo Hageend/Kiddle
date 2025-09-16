@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './css/style.css';
 
 // Importamos todas las páginas que vamos a crear
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
+import AddPetForm from './pages/AddPetForm';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
@@ -30,6 +32,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        
+        <Route 
+          path='/petForm' 
+          element={
+          <ProtectedRoute>
+            <AddPetForm />
+          </ProtectedRoute>
+        }/>
         
         {/* Una ruta "catch-all" por si el usuario va a una URL que no existe */}
         <Route path="*" element={<Navigate to="/" />} />

@@ -17,6 +17,12 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Este proyecto usa Docker para simplificar el entorno de desarrollo.
 
+>Asegurate de crear un archivo `.env` en la carpeta de servidor con los siguientes datos
+```
+DATABASE_URL: postgresql://user:password@localhost:5432/DB_Name
+JWT_SECRET: "Tu_llave_secreta"
+```
+
 ## Levantar el entorno con Docker
 
 ### Ejecuta en la raíz del proyecto (donde está el compose.yaml):
@@ -37,12 +43,3 @@ Esto hará:
 Cuando termine de iniciar, abre en tu navegador:
 
 👉 http://localhost:5173
-
-## Levantar el entorno con Bun
-
-### Ejecuta en la raíz del proyecto
-```sh
-bun install
-
-bun run dev
-```
