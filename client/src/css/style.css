@@ -1,0 +1,14 @@
+:root {
+    /*colores*/
+    --color-primario: #0f1f53;
+    --color-secundario: #e0dddd;
+    --color-texto: #ffffff;
+    /*fuentes*/
+    --fuente-principal: 'Poppins', sans-serif, Arial, Helvetica, sans-serif;
+    --tamano-fuente-base: 16px;
+    --tamano-fuente-h1: 2.5rem;
+    --line-height: 1.5;
+    --radio-borde: 8px;
+
+    --transicion-suave: all 0.3s ease-in-out;
+}

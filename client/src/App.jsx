@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import './css/style.css';
 
 // Importamos todas las páginas que vamos a crear
 import RegisterPage from './pages/RegisterPage';
