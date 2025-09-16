@@ -102,7 +102,8 @@ const AddPetForm = () => {
           <input type="checkbox" name="esterilizado" value={formData.esterilizado} onChange={handleChange}/>
           ¿Esta esterilizado?
         </label>
-
+        
+        <label htmlFor="actividad">Actividad:</label>
         <select name="actividad" value={formData.actividad} onChange={handleChange} required>
           <option value="">-- Selecciona un tiempo de actividad</option>
           <option value="Baja">Baja</option>
