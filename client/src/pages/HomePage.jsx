@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api';
+import NavBar from './Navbar/NavBar';
 
 const HomePage = () => {
   
@@ -11,10 +12,10 @@ const HomePage = () => {
   const handleAddPet = () => {
     navigate('/petForm')
   }
-  const handleLogout = () => {
+  /*const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
-  };
+  };*/
 
 
   const formatDate = (dateString) => {
@@ -38,18 +39,20 @@ const HomePage = () => {
 
 
   return (
+    <>
     <div>
+      <NavBar />
       <div>
-        <div>
+        <div className='cen'>
             <h1>Panel de Control de Mascotas</h1>
-            <button onClick={handleLogout}>Cerrar Sesión</button>
+            {/*<button onClick={handleLogout}>Cerrar Sesión</button>*/}
         </div>
-          <div>
+          <div className='cen'>
             {mascotas.length === 0 ? (
               <div>
-                <h2>¡Bienvenido!</h2>
+                <h2 className='cen'>¡Bienvenido!</h2>
                 <p>Para empezar, registra a tu primera mascota.</p>
-                <button onClick={handleAddPet}>Agregar Primera Mascota</button>
+                <button className='cen' onClick={handleAddPet}>Agregar Primera Mascota</button>
               </div>
             ) : (
               <div>
@@ -75,6 +78,7 @@ const HomePage = () => {
           </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import apiClient from '../api';
 import { useNavigate, Link } from 'react-router-dom';
-import "../css/LoginPage.css";
+
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ correo: '', contraseña: '' });

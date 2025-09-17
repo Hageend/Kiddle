@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../api';
+import NavBar from './Navbar/NavBar';
 
 const AddPetForm = () => {
   const [step, setStep] = useState(1);
@@ -79,9 +80,11 @@ const AddPetForm = () => {
   
 
   return (
+    <>
+    <NavBar />
     <div>
-      <h2>Registrar Nueva Mascota</h2>
       <form onSubmit={handleSubmit}>
+      <h2 className='pet'>Registrar Nueva Mascota</h2>
         <input name='nombre' type="text" value={formData.nombre} onChange={handleChange} placeholder='Nombre de la mascota' required/>
         <select name="sexo" value={formData.sexo} onChange={handleChange} required>
           <option value="Macho">Macho</option>
@@ -99,8 +102,8 @@ const AddPetForm = () => {
         </select>
 
         <label>
-          <input type="checkbox" name="esterilizado" value={formData.esterilizado} onChange={handleChange}/>
-          ¿Esta esterilizado?
+            ¿Esta esterilizado?
+          <input className='chek' type="checkbox" name="esterilizado" value={formData.esterilizado} onChange={handleChange}/>
         </label>
         
         <label htmlFor="actividad">Actividad:</label>
@@ -146,6 +149,7 @@ const AddPetForm = () => {
 
       {error && <p>{error}</p>}
     </div>
+    </>
   );
 };
 
