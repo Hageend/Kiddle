@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import apiClient from '../api';
 import { useNavigate, Link } from 'react-router-dom';
+import "../css/LoginPage.css";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ correo: '', contraseña: '' });
@@ -22,13 +23,13 @@ const LoginPage = () => {
 
   return (
     <div>
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="correo" onChange={handleChange} placeholder="Correo" required />
-        <input type="password" name="contraseña" onChange={handleChange} placeholder="Contraseña" required />
-        <button type="submit">Entrar</button>
-      </form>
-      <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
+    <form onSubmit={handleSubmit}>
+        <h2>Iniciar Sesión</h2>
+          <input type="email" name="correo" onChange={handleChange} placeholder="Correo" required />
+          <input type="password" name="contraseña" onChange={handleChange} placeholder="Contraseña" required />
+          <button type="submit">Entrar</button>
+        <p>¿No tienes una cuenta? <Link to="/register">Regístrate</Link></p>
+    </form>
     </div>
   );
 };

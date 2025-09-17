@@ -1,7 +1,6 @@
 {
   "name": "server",
   "module": "index.js",
-  "type": "module",
   "private": true,
   "devDependencies": {},
   "peerDependencies": {},
