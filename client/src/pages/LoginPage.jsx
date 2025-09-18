@@ -14,6 +14,7 @@ const LoginPage = () => {
     try {
       const response = await apiClient.post('/auth/login', formData);
       localStorage.setItem('token', response.data.token);
+       localStorage.setItem('user/id:', response.data.id_usuario);
       navigate('/'); // Redirige a la página principal
     } catch (error) {
       alert('Correo o contraseña incorrectos.');

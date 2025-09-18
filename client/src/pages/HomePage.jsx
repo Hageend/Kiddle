@@ -55,7 +55,7 @@ const HomePage = () => {
                 <button className='cen' onClick={handleAddPet}>Agregar Primera Mascota</button>
               </div>
             ) : (
-              <div>
+              <div className='mascota'>
                 <h2>Mis Mascotas!</h2>
                 <button onClick={handleAddPet}> + Agregar otra mascota</button>
                 <div>

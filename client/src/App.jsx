@@ -6,6 +6,8 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import AddPetForm from './pages/AddPetForm';
+import Carrito from './pages/CarritoPage';
+import DireccionPage from './pages/DireccionPage';
 
 // Componente para proteger rutas
 const ProtectedRoute = ({ children }) => {
@@ -40,6 +42,24 @@ function App() {
             <AddPetForm />
           </ProtectedRoute>
         }/>
+
+        <Route
+          path="/Carrito"
+          element={
+            <ProtectedRoute>
+              <Carrito />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/direccion"
+          element={
+            <ProtectedRoute>
+              <DireccionPage />
+            </ProtectedRoute>
+          }
+        />
         
         {/* Una ruta "catch-all" por si el usuario va a una URL que no existe */}
         <Route path="*" element={<Navigate to="/" />} />
