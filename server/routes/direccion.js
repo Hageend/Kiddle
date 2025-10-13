@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const prisma = require('../prisma/client');
-const authMiddleware = require('../middlewares/auth');
+const { protect } = require('../middleware/authMiddleware');
 
 // Obtener todas las direcciones del usuario
-router.get('/', authMiddleware, async (req, res) => {
+router.get('/', protect, async (req, res) => {
   try {
     const userId = req.user.id_usuario;
     const direcciones = await prisma.direccion.findMany({
@@ -18,7 +18,7 @@ router.get('/', authMiddleware, async (req, res) => {
 });
 
 // Agregar una nueva dirección
-router.post('/', authMiddleware, async (req, res) => {
+router.post('/', protect, async (req, res) => {
   try {
     const userId = req.user.id_usuario;
     const { calle, numero_exterior, numero_interior, colonia, codigo_postal, estado } = req.body;

@@ -1,65 +1,78 @@
+// routes/auth.js
 const express = require('express');
 const router = express.Router();
 const prisma = require('../prisma/client');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// POST /api/auth/register - Registrar un nuevo usuario
+// POST /api/auth/register - Registrar un nuevo usuario + dirección
 router.post('/register', async (req, res) => {
   try {
-    const { nombre, primer_apellido, segundo_apellido, correo, contraseña } = req.body;
-    
-    // 1. Hashear la contraseña
+    const {
+      nombre,
+      primer_apellido,
+      segundo_apellido,
+      correo,
+      contraseña,
+      telefono,
+      // campos de direccion (opcionales)
+      calle,
+      numero_exterior,
+      numero_interior,
+      colonia,
+      codigo_postal,
+      estado
+    } = req.body;
+
+    // Validaciones básicas (puedes ampliarlas)
+    if (!nombre || !primer_apellido || !correo || !contraseña) {
+      return res.status(400).json({ error: 'Faltan campos obligatorios.' });
+    }
+
+    // Verificar si ya existe el correo
+    const existing = await prisma.usuario.findUnique({ where: { correo } });
+    if (existing) {
+      return res.status(409).json({ error: 'El correo ya está registrado.' });
+    }
+
+    // Hashear la contraseña
     const contraseña_hash = await bcrypt.hash(contraseña, 10);
 
-    // 2. Crear el usuario en la base de datos
+    // Crear usuario y (opcional) direccion en la misma transacción
     const newUser = await prisma.usuario.create({
       data: {
         nombre,
         primer_apellido,
         segundo_apellido,
         correo,
-        contrase_a_hash: contraseña_hash, // Guardamos el hash
+        contrase_a_hash: contraseña_hash, // campo en prisma
+        telefono,
+        // Si se proporcionó al menos una propiedad de dirección, crearla
+        direccion: (calle || codigo_postal || colonia || numero_exterior || numero_interior || estado)
+          ? {
+              create: {
+                calle: calle || '',
+                numero_exterior: numero_exterior || null,
+                numero_interior: numero_interior || null,
+                colonia: colonia || '',
+                codigo_postal: codigo_postal || '',
+                estado: estado || ''
+              }
+            }
+          : undefined
       },
+      include: {
+        direccion: true
+      }
     });
 
-    // No devolvemos el hash de la contraseña
-    const { contrase_a_hash: _, ...userWithoutPassword } = newUser;
-    res.status(201).json(userWithoutPassword);
+    // No devolver el hash
+    const { contrase_a_hash: _, ...userSafe } = newUser;
+    res.status(201).json({ message: 'Usuario creado', user: userSafe });
+
   } catch (error) {
+    console.error('Error en /auth/register', error);
     res.status(500).json({ error: 'No se pudo registrar el usuario.' });
-  }
-});
-
-
-// POST /api/auth/login - Iniciar sesión
-router.post('/login', async (req, res) => {
-  try {
-    const { correo, contraseña } = req.body;
-    
-    // 1. Buscar al usuario por su correo
-    const user = await prisma.usuario.findUnique({ where: { correo } });
-    if (!user) {
-      return res.status(404).json({ error: 'Usuario no encontrado.' });
-    }
-
-    // 2. Comparar la contraseña enviada con el hash guardado
-    const isValidPassword = await bcrypt.compare(contraseña, user.contrase_a_hash);
-    if (!isValidPassword) {
-      return res.status(401).json({ error: 'Contraseña incorrecta.' });
-    }
-
-    // 3. Crear un Token (JWT)
-    const token = jwt.sign(
-      { id_usuario: user.id_usuario, correo: user.correo },
-      process.env.JWT_SECRET, // Variable en .env
-      { expiresIn: '1d' } // El token expira en 1 día
-    );
-    
-    res.json({ message: "Login exitoso", token });
-
-  } catch (error) {
-    res.status(500).json({ error: 'No se pudo iniciar sesión.' });
   }
 });
 
