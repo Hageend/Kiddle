@@ -61,7 +61,8 @@ const RegisterPage = () => {
       alert('Hubo un error al registrar el usuario.');
     }
   };
-
+  //console.log(formData);
+  
 
   return (
     <div>

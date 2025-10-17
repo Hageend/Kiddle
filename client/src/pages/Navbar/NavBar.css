@@ -7,6 +7,12 @@
   padding: 0 20px;
 }
 
+.navbar > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem
+}
+
 /* Logo */
 .navbar-logo img {
   width: 50px;

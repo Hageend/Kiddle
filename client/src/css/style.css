@@ -16,6 +16,10 @@
 h2{
     color: black;
 }
+
+h3 {
+  color: rgb(58, 126, 214);
+}
 p{
     color: black;
 }
@@ -98,6 +102,15 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;  
+}
+
+.cen > div {
+  background-color: var(--color-secundario);
+  border-radius: var(--radio-borde);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
 }
 .pet{
     color: black;

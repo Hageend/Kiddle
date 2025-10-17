@@ -1,6 +1,6 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Navbar/NavBar.css";
+import logo from "../../../assets/logo2.PNG";
 
 
 function NavBar() {
@@ -13,7 +13,7 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="/assets/logo2.png" alt="Logo" />
+        <img src={logo} alt="Logo" />
       </div>
       <div>
         <button onClick={() => navigate('/')}>Menú</button>
